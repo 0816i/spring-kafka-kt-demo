@@ -1,4 +1,4 @@
-package com.example.spring_kafka_kt_demo
+package com.example.springKafkaKtDemo
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class SpringKafkaKtDemoApplication
 
 fun main(args: Array<String>) {
-	runApplication<SpringKafkaKtDemoApplication>(*args)
+    runApplication<SpringKafkaKtDemoApplication>(*args)
 }
