@@ -18,7 +18,10 @@ class KafkaTestConsumer {
     var buffer = HashMap<TopicPartition, PartitionBuffer<ConsumerRecord<String, String>>>()
 
     @KafkaListener(topics = ["Test"], concurrency = "4")
-    fun listner(data: List<ConsumerRecord<String, String>>, consumer: Consumer<String, String>, acknowledgment: Acknowledgment) {
+    fun listner(
+        data: List<ConsumerRecord<String, String>>,
+        consumer: Consumer<String, String>,
+    ) {
         println(data.size)
         data.forEach {
             val partition = TopicPartition(it.topic(), it.partition())
@@ -39,7 +42,14 @@ class KafkaTestConsumer {
                     Duration.ofMillis(1000),
                 )
                 println(consumer.hashCode())
-                println(Thread.currentThread().name + lastRecord.topic() + '-' + lastRecord.partition() + " of " + lastRecord.offset() + " is committed")
+                println(
+                    Thread.currentThread().name + lastRecord.topic() +
+                        '-' +
+                        lastRecord.partition() +
+                        " of " +
+                        lastRecord.offset() +
+                        " is committed",
+                )
             }
         }
         println(Thread.currentThread().name + "Loop Done")
